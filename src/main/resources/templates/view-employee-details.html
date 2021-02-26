@@ -1,0 +1,151 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Employee Management System</title>-->
+
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+<!--          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"-->
+<!--          crossorigin="anonymous">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class = "container">-->
+<!--    <h1>Employee Management System</h1>-->
+<!--    <hr>-->
+<!--    <h2>View Employee Detail</h2>-->
+
+<!--    <form action = "#" th:action = "@{/employee}" th:object = "${employee}" method = "POST" >-->
+<!--        &lt;!&ndash; Add hidden form field to handle update &ndash;&gt;-->
+<!--        <input type="hidden" th:field="*{id}"/>-->
+<!--        <input type="text" th:field = "*{firstName}"  class = "form-control mb-4 col-4">-->
+
+<!--        <input type="text" th:field = "*{lastName}"  class = "form-control mb-4 col-4">-->
+
+<!--        <input type="text" th:field = "*{email}"  class = "form-control mb-4 col-4">-->
+
+<!--        <button type="submit" class = "btn btn-info col-2">View Employee</button>-->
+
+<!--    </form>-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<H2 align="center">EMPLOYEE DETAILS</H2>
+<div th:object="${employee}">
+    <div>
+        <label>First Name:</label>
+        <span th:text="*{firstName}" ></span>
+    </div>
+
+    <div>
+        <label>Last Name:</label>
+        <span th:text="*{lastName}" ></span>
+    </div>
+
+    <div>
+        <label>Email Address:</label>
+        <span th:text="*{email}" ></span>
+    </div>
+
+    <div>
+        <label>Age:</label>
+        <span th:text="*{age}" ></span>
+    </div>
+
+    <div>
+        <label>Position:</label>
+        <span th:text="*{position}" ></span>
+    </div>
+
+    <div>
+        <label>Salary:</label>
+        <span th:text="*{salary}" ></span>
+    </div>
+
+    <div>
+        <label>Leave Status:</label>
+        <span th:text="*{leaveStatus}" ></span>
+    </div>
+
+    <div>
+        <label>Address:</label>
+        <span th:text="*{address}" ></span>
+    </div>
+
+    <div>
+        <label>Phone Number:</label>
+        <span th:text="*{phoneNumber}" ></span>
+    </div>
+
+    <div>
+        <label>State of Origin:</label>
+        <span th:text="*{stateOfOrigin}" ></span>
+    </div>
+
+    <div>
+        <label>Marital Status:</label>
+        <span th:text="*{maritalStatus}" ></span>
+    </div>
+
+    <div>
+        <label>Religion:</label>
+        <span th:text="*{religion}" ></span>
+    </div>
+
+    <div>
+        <label>Qualification:</label>
+        <span th:text="*{qualification}" ></span>
+    </div>
+
+    <div>
+        <label>Years of Experience:</label>
+        <span th:text="*{yearsOfExperience}" ></span>
+    </div>
+
+    <div>
+        <a th:href="@{/employees/{id}/attendance(id=*{id})}">Add Attendance</a>
+    </div>
+
+    <div align="center">
+    <table>
+        <thead>
+        <tr>
+            <th>Weekday</th>
+            <th>Attendance Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Week No.</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        <tr th:each="attendance : ${employeeAttendance}">
+            <td th:text="${attendance.weekNumber}"></td>
+            <td th:text="${attendance.monday}"></td>
+            <td th:text="${attendance.tuesday}"></td>
+            <td th:text="${attendance.wednesday}"></td>
+            <td th:text="${attendance.thursday}"></td>
+            <td th:text="${attendance.friday}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+</body>
+</html>
